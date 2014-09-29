@@ -5,10 +5,10 @@
 function LinkedDividers(ids, settings) {
 	// Constructs a navigation of divs using their ids or a valid jQuery selector
 	if (!Array.isArray(ids)) {
-		divs= $(ids);
+		var divs = $(ids);
 		}
 	else {
-		divs = jQuery.map(ids, function (id) {return document.getElementById(id);});
+		var divs = jQuery.map(ids, function (id) {return document.getElementById(id);});
 		}
 	var settings = settings ? settings: {};
 	return {
@@ -67,4 +67,6 @@ function scrollToAnchor(div, offset) {
 		'scrollTop': target.offset().top + offset}, 900, 'swing');
 	}
 
-jQuery.fn.LinkedDividers = LinkedDividers;
+jQuery.fn.LinkedDividers = function (settings) {
+	return LinkedDividers(this, settings);
+	}
