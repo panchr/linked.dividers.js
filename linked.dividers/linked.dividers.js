@@ -16,7 +16,7 @@ function LinkedDividers(ids, settings) {
 		max: divs.length - 1,
 		current: settings.start,
 		offset: settings.offset,
-		onBottom: settings,
+		onBottom: settings.onBottom,
 		onTop: settings.onTop,
 		onNew: settings.onNew,
 		next: function () {
