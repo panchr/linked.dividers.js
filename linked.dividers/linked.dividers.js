@@ -28,14 +28,14 @@ function LinkedDividers(ids, settings) {
 			if (scroll_position + $(window).height() ==  getDocumentHeight()) {
 				this.current = this.max;
 				$(this.divs[this.current]).smoothScroll({offset: this.offset});
-				this.onNew();
+				this.onNew(this.divs[this.current]);
 				}
 			else if ($(new_div).offset().top <= scroll_position) {
 				this.next();
 				}
 			else {
 				$(new_div).smoothScroll({offset: this.offset});
-				this.onNew();
+				this.onNew(new_div);
 				}
 			if (this.current == this.max) {
 				this.onBottom();
@@ -49,14 +49,14 @@ function LinkedDividers(ids, settings) {
 			if (scroll_position == 0) {
 				this.current = 0;
 				$(this.divs[this.current]).smoothScroll({offset: this.offset});
-				this.onNew();
+				this.onNew(this.divs[this.current]);
 				}
 			else if ($(new_div).offset().top >= scroll_position) {
 				this.previous();
 				}
 			else {
 				$(new_div).smoothScroll({offset: this.offset});
-				this.onNew();
+				this.onNew(new_div);
 				}
 			if (this.current == 0) {
 				this.onTop();
