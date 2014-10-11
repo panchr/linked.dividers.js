@@ -10,7 +10,7 @@ function LinkedDividers(ids, settings) {
 	else {
 		var divs = jQuery.map(ids, function (id) {return document.getElementById(id);});
 		}
-	var settings = jQuery.extend({start: 0, offset: 0, onBottom: function () {}, onTop: function () {}, onNew: nullFunction}, settings);
+	var settings = jQuery.extend({start: 0, offset: 0, onBottom: function () {}, onTop: function () {}, onNew: function () {}}, settings);
 	return {
 		divs: divs,
 		max: divs.length - 1,
