@@ -19,7 +19,7 @@ function LinkedDividers(ids, settings) {
 		offset: settings.offset,
 		onBottom: settings,
 		onTop: settings.onTop,
-		onNew: settings,
+		onNew: settings.onNew,
 		next: function () {
 			// Navigates to the next div
 			this.current = (this.current == this.max ? 0: this.current + 1);
