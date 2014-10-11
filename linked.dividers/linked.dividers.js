@@ -25,13 +25,13 @@ function LinkedDividers(ids, settings) {
 			var scroll_position = $(document).scrollTop();
 			if (scroll_position + $(window).height() ==  getDocumentHeight()) {
 				this.current = this.max;
-				scrollToAnchor(this.divs[this.current], this.offset);
+				$(this.divs[this.current]).smoothScroll({offset: this.offset});
 				}
 			else if ($(new_div).offset().top <= scroll_position) {
 				this.next();
 				}
 			else {
-				scrollToAnchor(new_div, this.offset);
+				$(new_div).smoothScroll({offset: this.offset});
 				}
 			if (this.current == this.max) {
 				this.onBottom();
@@ -44,13 +44,13 @@ function LinkedDividers(ids, settings) {
 			var scroll_position = $(document).scrollTop();
 			if (scroll_position == 0) {
 				this.current = 0;
-				scrollToAnchor(this.divs[this.current], this.offset);
+				$(this.divs[this.current]).smoothScroll({offset: this.offset});
 				}
 			else if ($(new_div).offset().top >= scroll_position) {
 				this.previous();
 				}
 			else {
-				scrollToAnchor(new_div, this.offset);
+				$(new_div).smoothScroll({offset: this.offset});
 				}
 			if (this.current == 0) {
 				this.onTop();
@@ -59,12 +59,9 @@ function LinkedDividers(ids, settings) {
 		};
 	}
 
-function scrollToAnchor(div, offset) {
-	// Scrolls to an anchor
-	var offset = offset ? offset: 0;
-	var target = $(div);
-	$('html, body').stop().animate({
-		'scrollTop': target.offset().top + offset}, 900, 'swing');
+jQuery.fn.smoothScroll = function(options) {
+	var options = jQuery.extend({offset: 0, duration: 900, easing: "swing"}, options);
+	$('html, body').stop().animate({'scrollTop': this.offset().top + options.offset}, options.duration, options.easing);
 	}
 
 jQuery.fn.LinkedDividers = function (settings) {
